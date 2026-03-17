@@ -7,7 +7,11 @@ function App() {
   const [messages, setMessages] = useState<{role: string, text: string}[]>([
     { role: 'ai', text: '你好，我是你的AI心理健康伙伴。今天感觉怎么样？' }
   ]);
+  //输入框互斥
+  const [isAITyping, setIsAITyping] = useState(false);
   const [inputText, setInputText] = useState('');
+  const [aiTypingText, setAiTypingText] = useState("");   
+
   const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
@@ -31,11 +35,13 @@ function App() {
     }
   }, [videoEnabled]);
 
-  const handleSendText = async () => {
-    if (!inputText.trim()) return;
-    
+const handleSendText = async (overrideText?: string) => {
+    const textToSend = overrideText ?? inputText;
+
+    if (!textToSend.trim()) return;
+
     // User message
-    const newMessages = [...messages, { role: 'user', text: inputText }];
+    const newMessages = [...messages, { role: 'user', text: textToSend }];
     setMessages(newMessages);
     setInputText('');
 
@@ -98,7 +104,92 @@ function App() {
       });
     }
   };
+// asr部分
+const wsRef = useRef<WebSocket | null>(null);
+const audioContextRef = useRef<AudioContext | null>(null);
+const processorRef = useRef<ScriptProcessorNode | null>(null);
+const handleToggleRecording = async () => {
+  if (!isRecording) {
+    setIsRecording(true);
 
+    wsRef.current = new WebSocket("ws://localhost:12345/api/record"); // 替换为你的后端地址
+    wsRef.current.onopen = () => {
+    console.log("✅ WS connected for ASR streaming");
+  };
+    wsRef.current.onmessage = (msg) => {
+        try {
+        const data = JSON.parse(msg.data);
+
+        if (data.type === "conversation.item.input_audio_transcription.completed") {
+          const text = data.transcript;
+
+          console.log("🎤 ASR结果:", text);
+
+          // 1️⃣ 写入输入框（模拟用户输入）
+          setInputText(text);
+
+          // 2️⃣ 直接调用发送逻辑（模拟按下回车）
+          setTimeout(() => {
+            handleSendText(text);
+          }, 0);
+        }
+      } catch (e) {
+        console.error("WS message parse error:", e);
+      }
+    };
+
+    const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+    audioContextRef.current = new AudioContext({ sampleRate: 16000 });
+    const source = audioContextRef.current.createMediaStreamSource(stream);
+    processorRef.current = audioContextRef.current.createScriptProcessor(4096, 1, 1);
+
+    processorRef.current.onaudioprocess = (event) => {
+      if (!wsRef.current || wsRef.current.readyState !== WebSocket.OPEN) return;
+
+      const inputBuffer = event.inputBuffer.getChannelData(0);
+      const pcm16 = floatTo16BitPCM(inputBuffer);
+      const base64Chunk = btoa(pcm16);
+      wsRef.current.send(JSON.stringify({
+        event_id: `event_${Date.now()}`,
+        type: "input_audio_buffer.append",
+        audio: base64Chunk
+      }));
+    };
+
+    source.connect(processorRef.current);
+    processorRef.current.connect(audioContextRef.current.destination);
+
+  } else {
+    setIsRecording(false);
+
+    if (processorRef.current) processorRef.current.disconnect();
+    if (audioContextRef.current) audioContextRef.current.close();
+
+    if (wsRef.current && wsRef.current.readyState === WebSocket.OPEN) {
+      wsRef.current.send(JSON.stringify({ event_id: `event_${Date.now()}`, type: "input_audio_buffer.commit" }));
+      wsRef.current.send(JSON.stringify({ event_id: `event_${Date.now()}`, type: "session.finish" }));
+    }
+  }
+};
+
+
+function floatTo16BitPCM(float32Array: Float32Array) {
+  const buffer = new ArrayBuffer(float32Array.length * 2);
+  const view = new DataView(buffer);
+  let offset = 0;
+  for (let i = 0; i < float32Array.length; i++, offset += 2) {
+    let s = Math.max(-1, Math.min(1, float32Array[i]));
+    view.setInt16(offset, s < 0 ? s * 0x8000 : s * 0x7fff, true);
+  }
+  let binary = '';
+  const bytes = new Uint8Array(buffer);
+  const chunk = 0x8000;
+  for (let i = 0; i < bytes.length; i += chunk) {
+    const sub = bytes.subarray(i, i + chunk);
+    binary += String.fromCharCode.apply(null, sub as any);
+  }
+  return binary;
+}
   return (
     <div className="flex w-full h-screen bg-neutral-900 text-neutral-100 font-sans">
       {/* 左侧：3D/2D数字人渲染与摄像头画面 */}
@@ -117,7 +208,7 @@ function App() {
         {/* 底部控制栏 */}
         <div className="h-20 mt-4 bg-neutral-800 rounded-xl flex items-center justify-center gap-6 px-6 border border-neutral-700">
            <button 
-            onClick={() => setIsRecording(!isRecording)} 
+            onClick={handleToggleRecording}
             className={`p-4 rounded-full transition-all duration-300 ${isRecording ? 'bg-red-500 hover:bg-red-600' : 'bg-neutral-600 hover:bg-neutral-500'}`}
           >
             {isRecording ? <Mic className="w-6 h-6 text-white" /> : <MicOff className="w-6 h-6 text-white" />}
@@ -174,7 +265,7 @@ function App() {
           <div className="flex items-center gap-2">
             <input 
               type="text" 
-              value={inputText}
+              value={isAITyping ? aiTypingText : inputText} 
               onChange={(e) => setInputText(e.target.value)}
               onKeyDown={(e) => e.key === 'Enter' && handleSendText()}
               placeholder="输入你想说的话..." 

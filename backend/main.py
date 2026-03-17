@@ -1,45 +1,106 @@
-from fastapi import FastAPI, Request
+from fastapi import FastAPI, WebSocket, WebSocketDisconnect
 from fastapi.middleware.cors import CORSMiddleware
-from pydantic import BaseModel
+import base64
+import asyncio
+import json
 from typing import List, Dict, Any
-from fastapi.responses import StreamingResponse
-import uvicorn
-
-# 引入独立服务
-from llm_service import generate_chat_response_stream
+from asr import asr_decode_chunk  # 自己实现的 PCM16->文本函数
 
 app = FastAPI(title="Digital Avatar LLM Service")
 
-# 解决跨域问题，允许React前端调用
+# 解决跨域问题
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:12346"],  # 前端运行的默认端口
+    allow_origins=["*"],  # React 前端端口
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
+# ----------------------------
+# WebSocket 实时录音接口
+# ----------------------------
+@app.websocket("/api/record")
+async def record_ws(ws: WebSocket):
+    await ws.accept()
+    print("WebSocket connected for recording")
+    
+    buffer = bytearray()
+    
+    try:
+        while True:
+            msg = await ws.receive_text()
+            data = eval(msg) if isinstance(msg, str) else msg  # JSON 字符串
+            event_type = data.get("type")
+
+            # ----------------------
+            # 音频块追加
+            # ----------------------
+            if event_type == "input_audio_buffer.append":
+                audio_base64 = data.get("audio")
+                audio_bytes = base64.b64decode(audio_base64)
+                buffer.extend(audio_bytes)
+            
+            # ----------------------
+            # 音频提交
+            # ----------------------
+            elif event_type == "input_audio_buffer.commit":
+                # 可以在这里做 chunk ASR 或缓存标记
+                pass
+
+            # ----------------------
+            # 会话结束
+            # ----------------------
+            elif event_type == "session.finish":
+                # 把 buffer 传给 ASR Service
+                transcript = asr_decode_chunk(buffer)  # PCM16 -> 文本
+                print(transcript)
+                # 返回给前端
+                await ws.send_text(
+                    json.dumps({
+                        "type": "conversation.item.input_audio_transcription.completed",
+                        "transcript": transcript
+                    })
+                )#返回给前端的格式
+                buffer.clear()
+                await ws.close()
+                print("WebSocket closed after session finish")
+                break
+
+    except WebSocketDisconnect:
+        print("WebSocket disconnected")
+    except Exception as e:
+        print("WebSocket error:", e)
+        await ws.close()
+
+
+# ----------------------------
+# 原有 Chat 流式接口
+# ----------------------------
+from pydantic import BaseModel
+from fastapi.responses import StreamingResponse
+
 class Message(BaseModel):
-    role: str   # 'user' | 'ai'
+    role: str
     text: str
 
 class ChatRequest(BaseModel):
     messages: List[Message]
 
+# 假设你已有 generate_chat_response_stream
+from llm_service import generate_chat_response_stream
+
 @app.post("/api/chat/stream")
 async def chat_stream(request: ChatRequest):
-    """
-    流式请求，获取 DeepSeek 流响应
-    这是为了减少系统的延迟，也就是“字字吐出”，方便前端TTS拼接或动画口型驱动
-    """
-    # 转换为 LLM Service 所需的格式
     messages_history = [{"role": msg.role, "content": msg.text} for msg in request.messages]
-    
-    # 包装 Generator 为 SSE 格式
     return StreamingResponse(
         generate_chat_response_stream(messages_history),
         media_type="text/event-stream"
     )
 
+# ----------------------------
+# 启动
+# ----------------------------
 if __name__ == "__main__":
+    import uvicorn
     uvicorn.run("main:app", host="0.0.0.0", port=12345, reload=True)

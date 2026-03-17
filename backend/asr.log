@@ -1,0 +1,369 @@
+2026-03-17 15:01:39,647|INFO|Connecting to WebSocket server at wss://dashscope.aliyuncs.com/api-ws/v1/realtime?model=qwen3-asr-flash-realtime...
+2026-03-17 15:01:40,107|INFO|Connected to ASR server.
+2026-03-17 15:02:13,482|INFO|WebSocket closed: None - None
+2026-03-17 15:41:20,123|INFO|⏳ Waiting for WebSocket connection...
+2026-03-17 15:41:20,460|INFO|✅ Connected to ASR server
+2026-03-17 15:41:20,461|INFO|📩 Sent session.update
+2026-03-17 15:41:20,526|INFO|✅ WebSocket connection established.
+2026-03-17 15:41:20,715|DEBUG|📨 Sent audio chunk: 98304 bytes
+2026-03-17 15:41:20,716|INFO|📩 Sent session.finish
+2026-03-17 15:41:20,820|INFO|✅ Final transcript: 
+2026-03-17 15:41:20,863|INFO|ASR WebSocket closed: None - None
+2026-03-17 15:41:20,917|INFO|✅ asr_decode_chunk completed
+2026-03-17 15:42:09,639|INFO|⏳ Waiting for WebSocket connection...
+2026-03-17 15:42:10,082|INFO|✅ Connected to ASR server
+2026-03-17 15:42:10,083|INFO|📩 Sent session.update
+2026-03-17 15:42:10,141|INFO|✅ WebSocket connection established.
+2026-03-17 15:42:10,226|DEBUG|📨 Sent audio chunk: 81920 bytes
+2026-03-17 15:42:10,267|INFO|📩 Sent session.finish
+2026-03-17 15:42:10,359|INFO|✅ Final transcript: 
+2026-03-17 15:42:10,369|INFO|✅ asr_decode_chunk completed
+2026-03-17 15:42:10,404|INFO|ASR WebSocket closed: None - None
+2026-03-17 15:50:36,154|INFO|⏳ Waiting for WebSocket connection...
+2026-03-17 15:50:36,762|INFO|✅ Connected to ASR server
+2026-03-17 15:50:36,763|INFO|📩 Sent session.update
+2026-03-17 15:50:36,858|INFO|✅ WebSocket connection established.
+2026-03-17 15:50:36,986|DEBUG|📨 Sent audio chunk: 98304 bytes
+2026-03-17 15:50:36,987|INFO|📩 Sent session.finish
+2026-03-17 15:50:37,127|INFO|✅ Final transcript: 
+2026-03-17 15:50:37,172|INFO|ASR WebSocket closed: None - None
+2026-03-17 15:50:37,189|INFO|✅ asr_decode_chunk completed
+2026-03-17 16:01:15,225|INFO|⏳ Waiting for WebSocket connection...
+2026-03-17 16:01:15,957|INFO|✅ Connected to ASR server
+2026-03-17 16:01:15,960|INFO|📩 Sent session.update
+2026-03-17 16:01:16,034|INFO|✅ WebSocket connection established.
+2026-03-17 16:01:16,036|DEBUG|PCM bytes length: 3200
+2026-03-17 16:01:16,093|DEBUG|PCM bytes length: 3200
+2026-03-17 16:01:16,148|DEBUG|PCM bytes length: 3200
+2026-03-17 16:01:16,208|DEBUG|PCM bytes length: 3200
+2026-03-17 16:01:16,267|DEBUG|PCM bytes length: 3200
+2026-03-17 16:01:16,319|DEBUG|PCM bytes length: 3200
+2026-03-17 16:01:16,373|DEBUG|PCM bytes length: 3200
+2026-03-17 16:01:16,424|DEBUG|PCM bytes length: 3200
+2026-03-17 16:01:16,477|DEBUG|PCM bytes length: 3200
+2026-03-17 16:01:16,544|DEBUG|PCM bytes length: 3200
+2026-03-17 16:01:16,597|DEBUG|PCM bytes length: 3200
+2026-03-17 16:01:16,650|DEBUG|PCM bytes length: 3200
+2026-03-17 16:01:16,704|DEBUG|PCM bytes length: 3200
+2026-03-17 16:01:16,757|DEBUG|PCM bytes length: 3200
+2026-03-17 16:01:16,810|DEBUG|PCM bytes length: 3200
+2026-03-17 16:01:16,867|DEBUG|PCM bytes length: 3200
+2026-03-17 16:01:16,966|DEBUG|PCM bytes length: 3200
+2026-03-17 16:01:17,018|DEBUG|PCM bytes length: 3200
+2026-03-17 16:01:17,097|DEBUG|PCM bytes length: 3200
+2026-03-17 16:01:17,231|DEBUG|PCM bytes length: 3200
+2026-03-17 16:01:17,285|DEBUG|PCM bytes length: 3200
+2026-03-17 16:01:17,344|DEBUG|PCM bytes length: 3200
+2026-03-17 16:01:17,398|DEBUG|PCM bytes length: 3200
+2026-03-17 16:01:17,454|DEBUG|PCM bytes length: 3200
+2026-03-17 16:01:17,521|DEBUG|PCM bytes length: 3200
+2026-03-17 16:01:17,575|DEBUG|PCM bytes length: 3200
+2026-03-17 16:01:17,633|DEBUG|PCM bytes length: 3200
+2026-03-17 16:01:17,709|DEBUG|PCM bytes length: 3200
+2026-03-17 16:01:17,711|INFO|📝 Partial transcript: 喂喂喂。
+2026-03-17 16:01:17,761|DEBUG|PCM bytes length: 3200
+2026-03-17 16:01:17,817|DEBUG|PCM bytes length: 3200
+2026-03-17 16:01:17,881|DEBUG|PCM bytes length: 3200
+2026-03-17 16:01:17,975|DEBUG|PCM bytes length: 3200
+2026-03-17 16:01:18,041|DEBUG|PCM bytes length: 3200
+2026-03-17 16:01:18,097|DEBUG|PCM bytes length: 3200
+2026-03-17 16:01:18,148|DEBUG|PCM bytes length: 3200
+2026-03-17 16:01:18,217|DEBUG|PCM bytes length: 2688
+2026-03-17 16:01:18,408|INFO|📩 Sent session.finish
+2026-03-17 16:01:18,617|INFO|📝 Partial transcript: 你好。
+2026-03-17 16:01:18,619|INFO|✅ Final transcript: 喂喂喂。你好。
+2026-03-17 16:01:18,691|INFO|ASR WebSocket closed: None - None
+2026-03-17 16:01:18,716|INFO|✅ asr_decode_chunk completed
+2026-03-17 16:23:01,091|INFO|⏳ Waiting for WebSocket connection...
+2026-03-17 16:23:01,576|INFO|✅ Connected to ASR server
+2026-03-17 16:23:01,578|INFO|📩 Sent session.update
+2026-03-17 16:23:01,602|INFO|✅ WebSocket connection established.
+2026-03-17 16:23:01,603|DEBUG|PCM bytes length: 3200
+2026-03-17 16:23:01,654|DEBUG|PCM bytes length: 3200
+2026-03-17 16:23:01,705|DEBUG|PCM bytes length: 3200
+2026-03-17 16:23:01,757|DEBUG|PCM bytes length: 3200
+2026-03-17 16:23:01,808|DEBUG|PCM bytes length: 3200
+2026-03-17 16:23:01,860|DEBUG|PCM bytes length: 3200
+2026-03-17 16:23:01,911|DEBUG|PCM bytes length: 3200
+2026-03-17 16:23:01,963|DEBUG|PCM bytes length: 3200
+2026-03-17 16:23:02,014|DEBUG|PCM bytes length: 3200
+2026-03-17 16:23:02,065|DEBUG|PCM bytes length: 3200
+2026-03-17 16:23:02,117|DEBUG|PCM bytes length: 3200
+2026-03-17 16:23:02,168|DEBUG|PCM bytes length: 3200
+2026-03-17 16:23:02,219|DEBUG|PCM bytes length: 3200
+2026-03-17 16:23:02,271|DEBUG|PCM bytes length: 3200
+2026-03-17 16:23:02,322|DEBUG|PCM bytes length: 3200
+2026-03-17 16:23:02,374|DEBUG|PCM bytes length: 3200
+2026-03-17 16:23:02,426|DEBUG|PCM bytes length: 3200
+2026-03-17 16:23:02,477|DEBUG|PCM bytes length: 3200
+2026-03-17 16:23:02,529|DEBUG|PCM bytes length: 3200
+2026-03-17 16:23:02,580|DEBUG|PCM bytes length: 3200
+2026-03-17 16:23:02,631|DEBUG|PCM bytes length: 3200
+2026-03-17 16:23:02,683|DEBUG|PCM bytes length: 3200
+2026-03-17 16:23:02,734|DEBUG|PCM bytes length: 3200
+2026-03-17 16:23:02,785|DEBUG|PCM bytes length: 3200
+2026-03-17 16:23:02,836|DEBUG|PCM bytes length: 3200
+2026-03-17 16:23:02,888|DEBUG|PCM bytes length: 3200
+2026-03-17 16:23:02,939|DEBUG|PCM bytes length: 3200
+2026-03-17 16:23:02,991|DEBUG|PCM bytes length: 3200
+2026-03-17 16:23:03,042|DEBUG|PCM bytes length: 3200
+2026-03-17 16:23:03,094|DEBUG|PCM bytes length: 3200
+2026-03-17 16:23:03,149|DEBUG|PCM bytes length: 3200
+2026-03-17 16:23:03,183|INFO|📝 Partial transcript: 喂喂，你好。
+2026-03-17 16:23:03,200|DEBUG|PCM bytes length: 3200
+2026-03-17 16:23:03,251|DEBUG|PCM bytes length: 3200
+2026-03-17 16:23:03,302|DEBUG|PCM bytes length: 3200
+2026-03-17 16:23:03,354|DEBUG|PCM bytes length: 3200
+2026-03-17 16:23:03,406|DEBUG|PCM bytes length: 3200
+2026-03-17 16:23:03,457|DEBUG|PCM bytes length: 3200
+2026-03-17 16:23:03,508|DEBUG|PCM bytes length: 3200
+2026-03-17 16:23:03,559|DEBUG|PCM bytes length: 3200
+2026-03-17 16:23:03,611|DEBUG|PCM bytes length: 3200
+2026-03-17 16:23:03,662|DEBUG|PCM bytes length: 3200
+2026-03-17 16:23:03,713|DEBUG|PCM bytes length: 3200
+2026-03-17 16:23:03,765|DEBUG|PCM bytes length: 3200
+2026-03-17 16:23:03,816|DEBUG|PCM bytes length: 3200
+2026-03-17 16:23:03,867|DEBUG|PCM bytes length: 3200
+2026-03-17 16:23:03,918|DEBUG|PCM bytes length: 3200
+2026-03-17 16:23:03,969|DEBUG|PCM bytes length: 3200
+2026-03-17 16:23:04,021|DEBUG|PCM bytes length: 3200
+2026-03-17 16:23:04,073|DEBUG|PCM bytes length: 3200
+2026-03-17 16:23:04,124|DEBUG|PCM bytes length: 3200
+2026-03-17 16:23:04,176|DEBUG|PCM bytes length: 3200
+2026-03-17 16:23:04,227|DEBUG|PCM bytes length: 3200
+2026-03-17 16:23:04,279|DEBUG|PCM bytes length: 3200
+2026-03-17 16:23:04,330|DEBUG|PCM bytes length: 3200
+2026-03-17 16:23:04,381|DEBUG|PCM bytes length: 3200
+2026-03-17 16:23:04,432|DEBUG|PCM bytes length: 3200
+2026-03-17 16:23:04,483|DEBUG|PCM bytes length: 3200
+2026-03-17 16:23:04,535|DEBUG|PCM bytes length: 3200
+2026-03-17 16:23:04,586|DEBUG|PCM bytes length: 3200
+2026-03-17 16:23:04,638|DEBUG|PCM bytes length: 3200
+2026-03-17 16:23:04,689|DEBUG|PCM bytes length: 3200
+2026-03-17 16:23:04,740|DEBUG|PCM bytes length: 3200
+2026-03-17 16:23:04,792|DEBUG|PCM bytes length: 3200
+2026-03-17 16:23:04,843|DEBUG|PCM bytes length: 3200
+2026-03-17 16:23:04,895|DEBUG|PCM bytes length: 3200
+2026-03-17 16:23:04,946|DEBUG|PCM bytes length: 3200
+2026-03-17 16:23:04,998|DEBUG|PCM bytes length: 3200
+2026-03-17 16:23:05,049|DEBUG|PCM bytes length: 3200
+2026-03-17 16:23:05,101|DEBUG|PCM bytes length: 3200
+2026-03-17 16:23:05,152|DEBUG|PCM bytes length: 3200
+2026-03-17 16:23:05,204|DEBUG|PCM bytes length: 3200
+2026-03-17 16:23:05,255|DEBUG|PCM bytes length: 3200
+2026-03-17 16:23:05,307|DEBUG|PCM bytes length: 3200
+2026-03-17 16:23:05,358|DEBUG|PCM bytes length: 3200
+2026-03-17 16:23:05,410|DEBUG|PCM bytes length: 3200
+2026-03-17 16:23:05,462|DEBUG|PCM bytes length: 3200
+2026-03-17 16:23:05,513|DEBUG|PCM bytes length: 3200
+2026-03-17 16:23:05,564|DEBUG|PCM bytes length: 3200
+2026-03-17 16:23:05,615|DEBUG|PCM bytes length: 3200
+2026-03-17 16:23:05,667|DEBUG|PCM bytes length: 3200
+2026-03-17 16:23:05,718|DEBUG|PCM bytes length: 3200
+2026-03-17 16:23:05,769|DEBUG|PCM bytes length: 3200
+2026-03-17 16:23:05,821|DEBUG|PCM bytes length: 3200
+2026-03-17 16:23:05,876|DEBUG|PCM bytes length: 3200
+2026-03-17 16:23:05,927|DEBUG|PCM bytes length: 3200
+2026-03-17 16:23:05,978|DEBUG|PCM bytes length: 3200
+2026-03-17 16:23:06,029|DEBUG|PCM bytes length: 3200
+2026-03-17 16:23:06,081|DEBUG|PCM bytes length: 128
+2026-03-17 16:23:06,142|INFO|📩 Sent session.finish
+2026-03-17 16:23:06,195|INFO|✅ Final transcript: 喂喂，你好。
+2026-03-17 16:23:06,239|INFO|ASR WebSocket closed: None - None
+2026-03-17 16:23:06,243|INFO|✅ asr_decode_chunk completed
+2026-03-17 20:13:31,801|INFO|⏳ Waiting for WebSocket connection...
+2026-03-17 20:13:32,313|INFO|✅ Connected to ASR server
+2026-03-17 20:13:32,315|INFO|📩 Sent session.update
+2026-03-17 20:13:32,323|INFO|✅ WebSocket connection established.
+2026-03-17 20:13:32,323|DEBUG|PCM bytes length: 3200
+2026-03-17 20:13:32,375|DEBUG|PCM bytes length: 3200
+2026-03-17 20:13:32,426|DEBUG|PCM bytes length: 3200
+2026-03-17 20:13:32,477|DEBUG|PCM bytes length: 3200
+2026-03-17 20:13:32,528|DEBUG|PCM bytes length: 3200
+2026-03-17 20:13:32,580|DEBUG|PCM bytes length: 3200
+2026-03-17 20:13:32,631|DEBUG|PCM bytes length: 3200
+2026-03-17 20:13:32,682|DEBUG|PCM bytes length: 3200
+2026-03-17 20:13:32,734|DEBUG|PCM bytes length: 3200
+2026-03-17 20:13:32,786|DEBUG|PCM bytes length: 3200
+2026-03-17 20:13:32,837|DEBUG|PCM bytes length: 3200
+2026-03-17 20:13:32,888|DEBUG|PCM bytes length: 3200
+2026-03-17 20:13:32,939|DEBUG|PCM bytes length: 3200
+2026-03-17 20:13:32,991|DEBUG|PCM bytes length: 3200
+2026-03-17 20:13:33,042|DEBUG|PCM bytes length: 3200
+2026-03-17 20:13:33,093|DEBUG|PCM bytes length: 3200
+2026-03-17 20:13:33,144|DEBUG|PCM bytes length: 3200
+2026-03-17 20:13:33,196|DEBUG|PCM bytes length: 3200
+2026-03-17 20:13:33,247|DEBUG|PCM bytes length: 3200
+2026-03-17 20:13:33,298|DEBUG|PCM bytes length: 3200
+2026-03-17 20:13:33,350|DEBUG|PCM bytes length: 3200
+2026-03-17 20:13:33,401|DEBUG|PCM bytes length: 3200
+2026-03-17 20:13:33,452|DEBUG|PCM bytes length: 3200
+2026-03-17 20:13:33,504|DEBUG|PCM bytes length: 3200
+2026-03-17 20:13:33,555|DEBUG|PCM bytes length: 3200
+2026-03-17 20:13:33,606|DEBUG|PCM bytes length: 3200
+2026-03-17 20:13:33,657|DEBUG|PCM bytes length: 3200
+2026-03-17 20:13:33,708|DEBUG|PCM bytes length: 3200
+2026-03-17 20:13:33,759|DEBUG|PCM bytes length: 3200
+2026-03-17 20:13:33,811|DEBUG|PCM bytes length: 3200
+2026-03-17 20:13:33,863|DEBUG|PCM bytes length: 3200
+2026-03-17 20:13:33,914|DEBUG|PCM bytes length: 3200
+2026-03-17 20:13:33,966|DEBUG|PCM bytes length: 3200
+2026-03-17 20:13:34,017|DEBUG|PCM bytes length: 3200
+2026-03-17 20:13:34,067|DEBUG|PCM bytes length: 3200
+2026-03-17 20:13:34,119|DEBUG|PCM bytes length: 3200
+2026-03-17 20:13:34,171|DEBUG|PCM bytes length: 3200
+2026-03-17 20:13:34,222|DEBUG|PCM bytes length: 3200
+2026-03-17 20:13:34,273|DEBUG|PCM bytes length: 3200
+2026-03-17 20:13:34,324|DEBUG|PCM bytes length: 3200
+2026-03-17 20:13:34,375|DEBUG|PCM bytes length: 3200
+2026-03-17 20:13:34,426|DEBUG|PCM bytes length: 3200
+2026-03-17 20:13:34,477|DEBUG|PCM bytes length: 3200
+2026-03-17 20:13:34,528|DEBUG|PCM bytes length: 3200
+2026-03-17 20:13:34,580|DEBUG|PCM bytes length: 3200
+2026-03-17 20:13:34,631|DEBUG|PCM bytes length: 3200
+2026-03-17 20:13:34,682|DEBUG|PCM bytes length: 3200
+2026-03-17 20:13:34,735|DEBUG|PCM bytes length: 3200
+2026-03-17 20:13:34,786|DEBUG|PCM bytes length: 3200
+2026-03-17 20:13:34,837|DEBUG|PCM bytes length: 3200
+2026-03-17 20:13:34,888|DEBUG|PCM bytes length: 3200
+2026-03-17 20:13:34,940|DEBUG|PCM bytes length: 3200
+2026-03-17 20:13:34,991|DEBUG|PCM bytes length: 3200
+2026-03-17 20:13:35,011|INFO|📝 Partial transcript: 喂喂喂，你好。
+2026-03-17 20:13:35,042|DEBUG|PCM bytes length: 3200
+2026-03-17 20:13:35,093|DEBUG|PCM bytes length: 3200
+2026-03-17 20:13:35,144|DEBUG|PCM bytes length: 3200
+2026-03-17 20:13:35,196|DEBUG|PCM bytes length: 1024
+2026-03-17 20:13:35,248|INFO|📩 Sent session.finish
+2026-03-17 20:13:35,307|INFO|✅ Final transcript: 喂喂喂，你好。
+2026-03-17 20:13:35,349|INFO|✅ asr_decode_chunk completed
+2026-03-17 20:13:35,361|INFO|ASR WebSocket closed: None - None
+2026-03-17 20:16:00,561|INFO|⏳ Waiting for WebSocket connection...
+2026-03-17 20:16:00,831|ERROR|ASR WebSocket error: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self-signed certificate (_ssl.c:1006)
+2026-03-17 20:16:00,831|INFO|ASR WebSocket closed: None - None
+2026-03-17 20:16:32,413|INFO|⏳ Waiting for WebSocket connection...
+2026-03-17 20:16:32,888|INFO|✅ Connected to ASR server
+2026-03-17 20:16:32,889|INFO|📩 Sent session.update
+2026-03-17 20:16:32,940|INFO|✅ WebSocket connection established.
+2026-03-17 20:16:32,941|DEBUG|PCM bytes length: 3200
+2026-03-17 20:16:32,993|DEBUG|PCM bytes length: 3200
+2026-03-17 20:16:33,044|DEBUG|PCM bytes length: 3200
+2026-03-17 20:16:33,096|DEBUG|PCM bytes length: 3200
+2026-03-17 20:16:33,148|DEBUG|PCM bytes length: 3200
+2026-03-17 20:16:33,199|DEBUG|PCM bytes length: 3200
+2026-03-17 20:16:33,250|DEBUG|PCM bytes length: 3200
+2026-03-17 20:16:33,302|DEBUG|PCM bytes length: 3200
+2026-03-17 20:16:33,353|DEBUG|PCM bytes length: 3200
+2026-03-17 20:16:33,405|DEBUG|PCM bytes length: 3200
+2026-03-17 20:16:33,456|DEBUG|PCM bytes length: 3200
+2026-03-17 20:16:33,507|DEBUG|PCM bytes length: 3200
+2026-03-17 20:16:33,558|DEBUG|PCM bytes length: 3200
+2026-03-17 20:16:33,610|DEBUG|PCM bytes length: 3200
+2026-03-17 20:16:33,660|DEBUG|PCM bytes length: 3200
+2026-03-17 20:16:33,713|DEBUG|PCM bytes length: 3200
+2026-03-17 20:16:33,764|DEBUG|PCM bytes length: 3200
+2026-03-17 20:16:33,815|DEBUG|PCM bytes length: 3200
+2026-03-17 20:16:33,867|DEBUG|PCM bytes length: 3200
+2026-03-17 20:16:33,918|DEBUG|PCM bytes length: 3200
+2026-03-17 20:16:33,969|DEBUG|PCM bytes length: 3200
+2026-03-17 20:16:34,020|DEBUG|PCM bytes length: 3200
+2026-03-17 20:16:34,072|DEBUG|PCM bytes length: 3200
+2026-03-17 20:16:34,124|DEBUG|PCM bytes length: 3200
+2026-03-17 20:16:34,175|DEBUG|PCM bytes length: 3200
+2026-03-17 20:16:34,227|DEBUG|PCM bytes length: 3200
+2026-03-17 20:16:34,278|DEBUG|PCM bytes length: 3200
+2026-03-17 20:16:34,329|DEBUG|PCM bytes length: 3200
+2026-03-17 20:16:34,381|DEBUG|PCM bytes length: 3200
+2026-03-17 20:16:34,432|DEBUG|PCM bytes length: 3200
+2026-03-17 20:16:34,484|DEBUG|PCM bytes length: 3200
+2026-03-17 20:16:34,535|DEBUG|PCM bytes length: 3200
+2026-03-17 20:16:34,586|DEBUG|PCM bytes length: 3200
+2026-03-17 20:16:34,637|DEBUG|PCM bytes length: 896
+2026-03-17 20:16:34,691|INFO|📩 Sent session.finish
+2026-03-17 20:16:34,737|INFO|📝 Partial transcript: 喂喂喂，你好。
+2026-03-17 20:16:34,754|INFO|✅ Final transcript: 喂喂喂，你好。
+2026-03-17 20:16:34,792|INFO|✅ asr_decode_chunk completed
+2026-03-17 20:16:34,799|INFO|ASR WebSocket closed: None - None
+2026-03-17 20:29:24,467|INFO|⏳ Waiting for WebSocket connection...
+2026-03-17 20:29:24,734|ERROR|ASR WebSocket error: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self-signed certificate (_ssl.c:1006)
+2026-03-17 20:29:24,736|INFO|ASR WebSocket closed: None - None
+2026-03-17 21:03:12,821|INFO|⏳ Waiting for WebSocket connection...
+2026-03-17 21:03:14,214|INFO|✅ Connected to ASR server
+2026-03-17 21:03:14,215|INFO|📩 Sent session.update
+2026-03-17 21:03:14,254|INFO|✅ WebSocket connection established.
+2026-03-17 21:03:14,254|DEBUG|PCM bytes length: 3200
+2026-03-17 21:03:14,306|DEBUG|PCM bytes length: 3200
+2026-03-17 21:03:14,357|DEBUG|PCM bytes length: 3200
+2026-03-17 21:03:14,409|DEBUG|PCM bytes length: 3200
+2026-03-17 21:03:14,460|DEBUG|PCM bytes length: 3200
+2026-03-17 21:03:14,512|DEBUG|PCM bytes length: 3200
+2026-03-17 21:03:14,564|DEBUG|PCM bytes length: 3200
+2026-03-17 21:03:14,615|DEBUG|PCM bytes length: 3200
+2026-03-17 21:03:14,666|DEBUG|PCM bytes length: 3200
+2026-03-17 21:03:14,718|DEBUG|PCM bytes length: 3200
+2026-03-17 21:03:14,769|DEBUG|PCM bytes length: 3200
+2026-03-17 21:03:14,820|DEBUG|PCM bytes length: 3200
+2026-03-17 21:03:14,872|DEBUG|PCM bytes length: 3200
+2026-03-17 21:03:14,923|DEBUG|PCM bytes length: 3200
+2026-03-17 21:03:14,975|DEBUG|PCM bytes length: 3200
+2026-03-17 21:03:15,027|DEBUG|PCM bytes length: 3200
+2026-03-17 21:03:15,078|DEBUG|PCM bytes length: 3200
+2026-03-17 21:03:15,129|DEBUG|PCM bytes length: 3200
+2026-03-17 21:03:15,181|DEBUG|PCM bytes length: 3200
+2026-03-17 21:03:15,232|DEBUG|PCM bytes length: 3200
+2026-03-17 21:03:15,284|DEBUG|PCM bytes length: 3200
+2026-03-17 21:03:15,335|DEBUG|PCM bytes length: 3200
+2026-03-17 21:03:15,387|DEBUG|PCM bytes length: 3200
+2026-03-17 21:03:15,439|DEBUG|PCM bytes length: 3200
+2026-03-17 21:03:15,490|DEBUG|PCM bytes length: 3200
+2026-03-17 21:03:15,541|DEBUG|PCM bytes length: 3200
+2026-03-17 21:03:15,592|DEBUG|PCM bytes length: 3200
+2026-03-17 21:03:15,644|DEBUG|PCM bytes length: 3200
+2026-03-17 21:03:15,696|DEBUG|PCM bytes length: 512
+2026-03-17 21:03:15,747|INFO|📩 Sent session.finish
+2026-03-17 21:03:15,835|INFO|📝 Partial transcript: 你好呀。
+2026-03-17 21:03:15,837|INFO|✅ Final transcript: 你好呀。
+2026-03-17 21:03:15,848|INFO|✅ asr_decode_chunk completed
+2026-03-17 21:03:15,882|INFO|ASR WebSocket closed: None - None
+2026-03-17 21:06:43,857|INFO|⏳ Waiting for WebSocket connection...
+2026-03-17 21:06:44,307|INFO|✅ Connected to ASR server
+2026-03-17 21:06:44,308|INFO|📩 Sent session.update
+2026-03-17 21:06:44,359|INFO|✅ WebSocket connection established.
+2026-03-17 21:06:44,360|DEBUG|PCM bytes length: 3200
+2026-03-17 21:06:44,412|DEBUG|PCM bytes length: 3200
+2026-03-17 21:06:44,464|DEBUG|PCM bytes length: 3200
+2026-03-17 21:06:44,516|DEBUG|PCM bytes length: 3200
+2026-03-17 21:06:44,568|DEBUG|PCM bytes length: 3200
+2026-03-17 21:06:44,619|DEBUG|PCM bytes length: 3200
+2026-03-17 21:06:44,670|DEBUG|PCM bytes length: 3200
+2026-03-17 21:06:44,722|DEBUG|PCM bytes length: 3200
+2026-03-17 21:06:44,773|DEBUG|PCM bytes length: 3200
+2026-03-17 21:06:44,824|DEBUG|PCM bytes length: 3200
+2026-03-17 21:06:44,876|DEBUG|PCM bytes length: 3200
+2026-03-17 21:06:44,927|DEBUG|PCM bytes length: 3200
+2026-03-17 21:06:44,979|DEBUG|PCM bytes length: 3200
+2026-03-17 21:06:45,030|DEBUG|PCM bytes length: 3200
+2026-03-17 21:06:45,081|DEBUG|PCM bytes length: 3200
+2026-03-17 21:06:45,133|DEBUG|PCM bytes length: 3200
+2026-03-17 21:06:45,184|DEBUG|PCM bytes length: 3200
+2026-03-17 21:06:45,236|DEBUG|PCM bytes length: 3200
+2026-03-17 21:06:45,288|DEBUG|PCM bytes length: 3200
+2026-03-17 21:06:45,340|DEBUG|PCM bytes length: 3200
+2026-03-17 21:06:45,391|DEBUG|PCM bytes length: 3200
+2026-03-17 21:06:45,443|DEBUG|PCM bytes length: 3200
+2026-03-17 21:06:45,495|DEBUG|PCM bytes length: 3200
+2026-03-17 21:06:45,546|DEBUG|PCM bytes length: 3200
+2026-03-17 21:06:45,598|DEBUG|PCM bytes length: 3200
+2026-03-17 21:06:45,650|DEBUG|PCM bytes length: 3200
+2026-03-17 21:06:45,702|DEBUG|PCM bytes length: 3200
+2026-03-17 21:06:45,754|DEBUG|PCM bytes length: 3200
+2026-03-17 21:06:45,805|DEBUG|PCM bytes length: 3200
+2026-03-17 21:06:45,857|DEBUG|PCM bytes length: 3200
+2026-03-17 21:06:45,909|DEBUG|PCM bytes length: 3200
+2026-03-17 21:06:45,960|DEBUG|PCM bytes length: 3200
+2026-03-17 21:06:46,012|DEBUG|PCM bytes length: 3200
+2026-03-17 21:06:46,063|DEBUG|PCM bytes length: 896
+2026-03-17 21:06:46,116|INFO|📩 Sent session.finish
+2026-03-17 21:06:46,271|INFO|📝 Partial transcript: 我压力好大。
+2026-03-17 21:06:46,272|INFO|✅ Final transcript: 我压力好大。
+2026-03-17 21:06:46,315|INFO|ASR WebSocket closed: None - None
+2026-03-17 21:06:46,318|INFO|✅ asr_decode_chunk completed

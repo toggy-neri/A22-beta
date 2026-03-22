@@ -2,6 +2,7 @@ import os
 import json
 from openai import AsyncOpenAI
 from dotenv import load_dotenv
+import dashscope
 
 load_dotenv()
 
@@ -36,22 +37,41 @@ async def generate_chat_response_stream(messages_history: list):
         messages.append({"role": role, "content": msg["content"]})
 
     try:
+        full_text = ""
+
         response = await client.chat.completions.create(
-            model="deepseek-chat", # 使用deepseek对话大模型
+            model="deepseek-chat",
             messages=messages,
             stream=True,
             max_tokens=512,
-            temperature=0.6, # 稍微调低温度，让回答温和、不过度发散
+            temperature=0.6,
             top_p=0.9
         )
-        
+
         async for chunk in response:
             if chunk.choices and chunk.choices[0].delta.content:
                 content = chunk.choices[0].delta.content
+                full_text += content  
+
                 yield f"data: {json.dumps({'content': content})}\n\n"
-        
+
+        tts_response = dashscope.MultiModalConversation.call(
+            model="qwen3-tts-flash",
+            api_key=os.getenv("DASHSCOPE_API_KEY"),
+            text=full_text,   
+            voice="Sunny",
+            language_type="Chinese",
+            stream=False
+        )
+        print(tts_response)
+        try:
+            tts_url = tts_response.output.audio.url
+            yield f"data: {json.dumps({'audio_url': tts_url})}\n\n"
+        except Exception as e:
+            print("TTS解析失败:", e)
+            yield f"data: {json.dumps({'error': 'TTS生成失败'})}\n\n"
         yield "data: [DONE]\n\n"
-        
+
     except Exception as e:
         error_msg = f"发生错误: {str(e)}"
         yield f"data: {json.dumps({'error': error_msg})}\n\n"

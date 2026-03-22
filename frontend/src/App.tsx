@@ -76,11 +76,16 @@ const handleSendText = async (overrideText?: string) => {
               if (dataStr === '[DONE]') break;
               try {
                 const data = JSON.parse(dataStr);
+                console.log("data:",data);
                 if (data.error) {
                   aiResponseText += `\n[错误: ${data.error}]`;
                 } else if (data.content) {
                   aiResponseText += data.content;
-                }
+                } else if (data.audio_url) {
+              console.log("tts结果:", data.audio_url);
+              const audio = new Audio(data.audio_url);
+              audio.play();
+              }
                 
                 // 更新界面的最后一条AI回复
                 setMessages(prev => {
@@ -271,10 +276,8 @@ function floatTo16BitPCM(float32Array: Float32Array) {
               placeholder="输入你想说的话..." 
               className="flex-1 bg-neutral-900 border border-neutral-700 rounded-full px-4 py-2 text-sm focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all"
             />
-            <button 
-              onClick={handleSendText}
-              className="p-2 bg-blue-600 hover:bg-blue-500 rounded-full text-white transition-colors"
-            >
+            <button onClick={() => handleSendText()}  
+                    className="p-2 bg-blue-600 hover:bg-blue-500 rounded-full text-white transition-colors">
               <Send className="w-5 h-5" />
             </button>
           </div>

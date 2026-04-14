@@ -1,0 +1,201 @@
+2026-04-14 00:04:13,709|INFO|[LocalASR] Initializing model: iic/SenseVoiceSmall
+2026-04-14 00:04:13,710|INFO|[LocalASR] Target device: cuda
+2026-04-14 00:07:53,859|INFO|[LocalASR] Initializing model: iic/SenseVoiceSmall
+2026-04-14 00:07:53,859|INFO|[LocalASR] Target device: cuda
+2026-04-14 00:15:13,953|INFO|[LocalASR] Initializing model: iic/SenseVoiceSmall
+2026-04-14 00:15:13,954|INFO|[LocalASR] Target device: cuda
+2026-04-14 00:16:15,652|INFO|[LocalASR] Initializing model: iic/SenseVoiceSmall
+2026-04-14 00:16:15,653|INFO|[LocalASR] Target device: cuda
+2026-04-14 00:16:33,754|INFO|[LocalASR] Initializing model: iic/SenseVoiceSmall
+2026-04-14 00:16:33,755|INFO|[LocalASR] Target device: cuda
+2026-04-14 00:17:17,995|INFO|[LocalASR] Initializing model: iic/SenseVoiceSmall
+2026-04-14 00:17:17,996|INFO|[LocalASR] Target device: cuda
+2026-04-14 00:25:25,224|INFO|[LocalASR] Initializing model: iic/SenseVoiceSmall
+2026-04-14 00:25:25,224|INFO|[LocalASR] Target device: cuda
+2026-04-14 00:30:16,696|INFO|[LocalASR] Initializing model: iic/SenseVoiceSmall
+2026-04-14 00:30:16,696|INFO|[LocalASR] Target device: cuda
+2026-04-14 00:37:37,859|INFO|[LocalASR] Initializing model: iic/SenseVoiceSmall
+2026-04-14 00:37:37,860|INFO|[LocalASR] Target device: cuda
+2026-04-14 00:37:37,860|INFO|[LocalASR] Found local model at: C:\Users\24852\.cache\modelscope\hub\models\iic\SenseVoiceSmall
+2026-04-14 00:37:37,861|INFO|[LocalASR] Using cached model from: C:\Users\24852\.cache\modelscope\hub\models\iic\SenseVoiceSmall
+2026-04-14 00:38:22,003|INFO|[LocalASR] GPU detected: NVIDIA GeForce RTX 3050 Ti Laptop GPU, Total memory: 4.00 GB
+2026-04-14 00:38:22,003|WARNING|[LocalASR] GPU memory (4.00 GB) may be insufficient for optimal performance
+2026-04-14 00:38:22,003|WARNING|[LocalASR] Consider using CPU mode or a smaller model
+2026-04-14 00:38:28,193|INFO|[LocalASR] Initializing model: iic/SenseVoiceSmall
+2026-04-14 00:38:28,194|INFO|[LocalASR] Target device: cuda
+2026-04-14 00:38:28,194|INFO|[LocalASR] Found local model at: C:\Users\24852\.cache\modelscope\hub\models\iic\SenseVoiceSmall
+2026-04-14 00:38:28,195|INFO|[LocalASR] Using cached model from: C:\Users\24852\.cache\modelscope\hub\models\iic\SenseVoiceSmall
+2026-04-14 00:38:42,751|INFO|[LocalASR] GPU detected: NVIDIA GeForce RTX 3050 Ti Laptop GPU, Total memory: 4.00 GB
+2026-04-14 00:38:42,752|WARNING|[LocalASR] GPU memory (4.00 GB) may be insufficient for optimal performance
+2026-04-14 00:38:42,752|WARNING|[LocalASR] Consider using CPU mode or a smaller model
+2026-04-14 00:38:47,492|INFO|[LocalASR] Initializing model: iic/SenseVoiceSmall
+2026-04-14 00:38:47,492|INFO|[LocalASR] Target device: cuda
+2026-04-14 00:38:47,493|INFO|[LocalASR] Found local model at: C:\Users\24852\.cache\modelscope\hub\models\iic\SenseVoiceSmall
+2026-04-14 00:38:47,493|INFO|[LocalASR] Using cached model from: C:\Users\24852\.cache\modelscope\hub\models\iic\SenseVoiceSmall
+2026-04-14 00:39:15,544|INFO|[LocalASR] GPU detected: NVIDIA GeForce RTX 3050 Ti Laptop GPU, Total memory: 4.00 GB
+2026-04-14 00:39:15,544|WARNING|[LocalASR] GPU memory (4.00 GB) may be insufficient for optimal performance
+2026-04-14 00:39:15,545|WARNING|[LocalASR] Consider using CPU mode or a smaller model
+2026-04-14 00:39:20,213|INFO|[LocalASR] Initializing model: iic/SenseVoiceSmall
+2026-04-14 00:39:20,214|INFO|[LocalASR] Target device: cuda
+2026-04-14 00:39:20,214|INFO|[LocalASR] Found local model at: C:\Users\24852\.cache\modelscope\hub\models\iic\SenseVoiceSmall
+2026-04-14 00:39:20,215|INFO|[LocalASR] Using cached model from: C:\Users\24852\.cache\modelscope\hub\models\iic\SenseVoiceSmall
+2026-04-14 00:39:55,134|INFO|[LocalASR] GPU detected: NVIDIA GeForce RTX 3050 Ti Laptop GPU, Total memory: 4.00 GB
+2026-04-14 00:39:55,134|WARNING|[LocalASR] GPU memory (4.00 GB) may be insufficient for optimal performance
+2026-04-14 00:39:55,135|WARNING|[LocalASR] Consider using CPU mode or a smaller model
+2026-04-14 00:39:55,324|INFO|[LocalASR] Initializing model: iic/SenseVoiceSmall
+2026-04-14 00:39:55,325|INFO|[LocalASR] Target device: c
+2026-04-14 00:39:55,325|INFO|[LocalASR] Found local model at: C:\Users\24852\.cache\modelscope\hub\models\iic\SenseVoiceSmall
+2026-04-14 00:39:55,325|INFO|[LocalASR] Using cached model from: C:\Users\24852\.cache\modelscope\hub\models\iic\SenseVoiceSmall
+2026-04-14 00:39:59,718|INFO|[LocalASR] Initializing model: iic/SenseVoiceSmall
+2026-04-14 00:39:59,720|INFO|[LocalASR] Target device: cuda
+2026-04-14 00:39:59,720|INFO|[LocalASR] Found local model at: C:\Users\24852\.cache\modelscope\hub\models\iic\SenseVoiceSmall
+2026-04-14 00:39:59,721|INFO|[LocalASR] Using cached model from: C:\Users\24852\.cache\modelscope\hub\models\iic\SenseVoiceSmall
+2026-04-14 00:42:47,427|INFO|[LocalASR] GPU detected: NVIDIA GeForce RTX 3050 Ti Laptop GPU, Total memory: 4.00 GB
+2026-04-14 00:42:47,428|WARNING|[LocalASR] GPU memory (4.00 GB) may be insufficient for optimal performance
+2026-04-14 00:42:47,428|WARNING|[LocalASR] Consider using CPU mode or a smaller model
+2026-04-14 00:42:57,732|INFO|[LocalASR] Initializing model: iic/SenseVoiceSmall
+2026-04-14 00:42:57,733|INFO|[LocalASR] Target device: cuda
+2026-04-14 00:42:57,734|INFO|[LocalASR] Found local model at: C:\Users\24852\.cache\modelscope\hub\models\iic\SenseVoiceSmall
+2026-04-14 00:42:57,734|INFO|[LocalASR] Using cached model from: C:\Users\24852\.cache\modelscope\hub\models\iic\SenseVoiceSmall
+2026-04-14 00:43:12,032|INFO|[LocalASR] GPU detected: NVIDIA GeForce RTX 3050 Ti Laptop GPU, Total memory: 4.00 GB
+2026-04-14 00:43:12,032|WARNING|[LocalASR] GPU memory (4.00 GB) may be insufficient for optimal performance
+2026-04-14 00:43:12,033|WARNING|[LocalASR] Consider using CPU mode or a smaller model
+2026-04-14 00:43:17,073|INFO|[LocalASR] Initializing model: iic/SenseVoiceSmall
+2026-04-14 00:43:17,073|INFO|[LocalASR] Target device: cuda
+2026-04-14 00:43:17,073|INFO|[LocalASR] Found local model at: C:\Users\24852\.cache\modelscope\hub\models\iic\SenseVoiceSmall
+2026-04-14 00:43:17,075|INFO|[LocalASR] Using cached model from: C:\Users\24852\.cache\modelscope\hub\models\iic\SenseVoiceSmall
+2026-04-14 00:43:47,869|INFO|[LocalASR] GPU detected: NVIDIA GeForce RTX 3050 Ti Laptop GPU, Total memory: 4.00 GB
+2026-04-14 00:43:47,870|WARNING|[LocalASR] GPU memory (4.00 GB) may be insufficient for optimal performance
+2026-04-14 00:43:47,870|WARNING|[LocalASR] Consider using CPU mode or a smaller model
+2026-04-14 00:43:54,974|INFO|[LocalASR] Initializing model: iic/SenseVoiceSmall
+2026-04-14 00:43:54,975|INFO|[LocalASR] Target device: cuda
+2026-04-14 00:43:54,975|INFO|[LocalASR] Found local model at: C:\Users\24852\.cache\modelscope\hub\models\iic\SenseVoiceSmall
+2026-04-14 00:43:54,976|INFO|[LocalASR] Using cached model from: C:\Users\24852\.cache\modelscope\hub\models\iic\SenseVoiceSmall
+2026-04-14 00:44:03,861|INFO|[LocalASR] GPU detected: NVIDIA GeForce RTX 3050 Ti Laptop GPU, Total memory: 4.00 GB
+2026-04-14 00:44:03,862|WARNING|[LocalASR] GPU memory (4.00 GB) may be insufficient for optimal performance
+2026-04-14 00:44:03,862|WARNING|[LocalASR] Consider using CPU mode or a smaller model
+2026-04-14 00:44:08,710|INFO|[LocalASR] Initializing model: iic/SenseVoiceSmall
+2026-04-14 00:44:08,710|INFO|[LocalASR] Target device: cuda
+2026-04-14 00:44:08,711|INFO|[LocalASR] Found local model at: C:\Users\24852\.cache\modelscope\hub\models\iic\SenseVoiceSmall
+2026-04-14 00:44:08,711|INFO|[LocalASR] Using cached model from: C:\Users\24852\.cache\modelscope\hub\models\iic\SenseVoiceSmall
+2026-04-14 00:45:02,709|INFO|[LocalASR] GPU detected: NVIDIA GeForce RTX 3050 Ti Laptop GPU, Total memory: 4.00 GB
+2026-04-14 00:45:02,711|WARNING|[LocalASR] GPU memory (4.00 GB) may be insufficient for optimal performance
+2026-04-14 00:45:02,711|WARNING|[LocalASR] Consider using CPU mode or a smaller model
+2026-04-14 00:45:09,926|INFO|[LocalASR] Initializing model: iic/SenseVoiceSmall
+2026-04-14 00:45:09,927|INFO|[LocalASR] Target device: cuda
+2026-04-14 00:45:19,189|INFO|[LocalASR] GPU detected: NVIDIA GeForce RTX 3050 Ti Laptop GPU, Total memory: 4.00 GB
+2026-04-14 00:45:19,190|WARNING|[LocalASR] GPU memory (4.00 GB) may be insufficient for optimal performance
+2026-04-14 00:45:19,190|WARNING|[LocalASR] Consider using CPU mode or a smaller model
+2026-04-14 00:45:24,002|INFO|[LocalASR] Initializing model: iic/SenseVoiceSmall
+2026-04-14 00:45:24,003|INFO|[LocalASR] Target device: cuda
+2026-04-14 00:45:59,435|INFO|[LocalASR] GPU detected: NVIDIA GeForce RTX 3050 Ti Laptop GPU, Total memory: 4.00 GB
+2026-04-14 00:45:59,435|WARNING|[LocalASR] GPU memory (4.00 GB) may be insufficient for optimal performance
+2026-04-14 00:45:59,436|WARNING|[LocalASR] Consider using CPU mode or a smaller model
+2026-04-14 00:46:06,592|INFO|[LocalASR] Initializing model: iic/SenseVoiceSmall
+2026-04-14 00:46:06,593|INFO|[LocalASR] Target device: cuda
+2026-04-14 00:46:17,487|INFO|[LocalASR] GPU detected: NVIDIA GeForce RTX 3050 Ti Laptop GPU, Total memory: 4.00 GB
+2026-04-14 00:46:17,487|WARNING|[LocalASR] GPU memory (4.00 GB) may be insufficient for optimal performance
+2026-04-14 00:46:17,487|WARNING|[LocalASR] Consider using CPU mode or a smaller model
+2026-04-14 00:46:22,360|INFO|[LocalASR] Initializing model: iic/SenseVoiceSmall
+2026-04-14 00:46:22,360|INFO|[LocalASR] Target device: cuda
+2026-04-14 00:46:56,171|INFO|[LocalASR] GPU detected: NVIDIA GeForce RTX 3050 Ti Laptop GPU, Total memory: 4.00 GB
+2026-04-14 00:46:56,171|WARNING|[LocalASR] GPU memory (4.00 GB) may be insufficient for optimal performance
+2026-04-14 00:46:56,172|WARNING|[LocalASR] Consider using CPU mode or a smaller model
+2026-04-14 00:47:00,883|INFO|[LocalASR] Initializing model: iic/SenseVoiceSmall
+2026-04-14 00:47:00,883|INFO|[LocalASR] Target device: cpu
+2026-04-14 00:49:48,080|WARNING|[LocalASR] PyTorch not installed, cannot check GPU
+2026-04-14 00:49:48,080|ERROR|[LocalASR] FunASR not installed. Please run: pip install funasr modelscope
+2026-04-14 00:50:44,771|WARNING|[LocalASR] PyTorch not installed, cannot check GPU
+2026-04-14 00:50:47,081|ERROR|[LocalASR] FunASR not installed. Please run: pip install funasr modelscope
+2026-04-14 00:52:41,142|INFO|[LocalASR] GPU detected: NVIDIA GeForce RTX 3050 Ti Laptop GPU, Total memory: 4.00 GB
+2026-04-14 00:52:41,142|WARNING|[LocalASR] GPU memory (4.00 GB) may be insufficient for optimal performance
+2026-04-14 00:52:41,143|WARNING|[LocalASR] Consider using CPU mode or a smaller model
+2026-04-14 00:52:47,451|INFO|[LocalASR] Initializing model: iic/SenseVoiceSmall
+2026-04-14 00:52:47,451|INFO|[LocalASR] Target device: cpu
+2026-04-14 09:28:00,966|INFO|[LocalASR] GPU detected: NVIDIA GeForce RTX 3050 Ti Laptop GPU, Total memory: 4.00 GB
+2026-04-14 09:28:00,968|WARNING|[LocalASR] GPU memory (4.00 GB) may be insufficient for optimal performance
+2026-04-14 09:28:00,968|WARNING|[LocalASR] Consider using CPU mode or a smaller model
+2026-04-14 09:28:10,632|INFO|[LocalASR] Initializing model: iic/SenseVoiceSmall
+2026-04-14 09:28:10,633|INFO|[LocalASR] Target device: cuda
+2026-04-14 09:28:10,636|INFO|[LocalASR] Found local model at: C:\Users\24852\.cache\modelscope\hub\models\iic\SenseVoiceSmall
+2026-04-14 09:28:10,636|INFO|[LocalASR] Using cached model from: C:\Users\24852\.cache\modelscope\hub\models\iic\SenseVoiceSmall
+2026-04-14 09:59:33,982|INFO|[LocalASR] GPU detected: NVIDIA GeForce RTX 3050 Ti Laptop GPU, Total memory: 4.00 GB
+2026-04-14 09:59:33,983|WARNING|[LocalASR] GPU memory (4.00 GB) may be insufficient for optimal performance
+2026-04-14 09:59:33,984|WARNING|[LocalASR] Consider using CPU mode or a smaller model
+2026-04-14 09:59:34,797|INFO|[LocalASR] Initializing Whisper model: base
+2026-04-14 09:59:34,800|INFO|[LocalASR] Target device: cuda
+2026-04-14 09:59:45,134|INFO|[LocalASR] Model initialized successfully
+2026-04-14 10:00:13,890|INFO|[LocalASR] GPU detected: NVIDIA GeForce RTX 3050 Ti Laptop GPU, Total memory: 4.00 GB
+2026-04-14 10:00:13,891|WARNING|[LocalASR] GPU memory (4.00 GB) may be insufficient for optimal performance
+2026-04-14 10:00:13,891|WARNING|[LocalASR] Consider using CPU mode or a smaller model
+2026-04-14 10:00:14,052|INFO|[LocalASR] Initializing Whisper model: base
+2026-04-14 10:00:14,052|INFO|[LocalASR] Target device: cuda
+2026-04-14 10:00:15,126|INFO|[LocalASR] Model initialized successfully
+2026-04-14 10:02:41,846|INFO|[LocalASR] Initializing Whisper model: base
+2026-04-14 10:02:41,846|INFO|[LocalASR] Target device: cuda
+2026-04-14 10:02:43,037|INFO|[LocalASR] Model initialized successfully
+2026-04-14 10:04:44,825|INFO|[LocalASR] Initializing Whisper model: base
+2026-04-14 10:04:44,825|INFO|[LocalASR] Target device: cuda
+2026-04-14 10:04:46,427|INFO|[LocalASR] Model initialized successfully
+2026-04-14 10:05:56,193|INFO|[LocalASR] Initializing Whisper model: base
+2026-04-14 10:05:56,193|INFO|[LocalASR] Target device: cuda
+2026-04-14 10:05:57,890|INFO|[LocalASR] Model initialized successfully
+2026-04-14 10:12:09,767|INFO|[LocalASR] Initializing Whisper model: base
+2026-04-14 10:12:09,767|INFO|[LocalASR] Target device: cuda
+2026-04-14 10:12:11,337|INFO|[LocalASR] Model initialized successfully
+2026-04-14 10:13:25,318|INFO|[LocalASR] Initializing Whisper model: base
+2026-04-14 10:13:25,318|INFO|[LocalASR] Target device: cuda
+2026-04-14 10:13:26,914|INFO|[LocalASR] Model initialized successfully
+2026-04-14 10:21:56,659|INFO|[LocalASR] Initializing Whisper model: base
+2026-04-14 10:21:56,659|INFO|[LocalASR] Target device: cuda
+2026-04-14 10:21:58,503|INFO|[LocalASR] Model initialized successfully
+2026-04-14 10:55:09,747|ERROR|[LocalASR] Whisper not installed. Please run: pip install openai-whisper
+2026-04-14 10:56:14,177|ERROR|[LocalASR] Whisper not installed. Please run: pip install openai-whisper
+2026-04-14 10:57:33,797|INFO|[LocalASR] Initializing Whisper model: base
+2026-04-14 10:57:33,797|INFO|[LocalASR] Target device: cuda
+2026-04-14 10:57:35,419|INFO|[LocalASR] Model initialized successfully
+2026-04-14 11:11:46,345|INFO|[LocalASR] Initializing Whisper model: base
+2026-04-14 11:11:46,345|INFO|[LocalASR] Target device: cuda
+2026-04-14 11:11:48,351|INFO|[LocalASR] Model initialized successfully
+2026-04-14 11:35:37,403|INFO|[LocalASR] Initializing Whisper model: base
+2026-04-14 11:35:37,403|INFO|[LocalASR] Target device: cuda
+2026-04-14 11:35:39,278|INFO|[LocalASR] Model initialized successfully
+2026-04-14 11:38:53,997|INFO|[LocalASR] Initializing Whisper model: base
+2026-04-14 11:38:53,999|INFO|[LocalASR] Target device: cuda
+2026-04-14 11:38:55,406|INFO|[LocalASR] Model initialized successfully
+2026-04-14 11:39:53,618|INFO|[LocalASR] Initializing Whisper model: base
+2026-04-14 11:39:53,619|INFO|[LocalASR] Target device: cuda
+2026-04-14 11:39:55,558|INFO|[LocalASR] Model initialized successfully
+2026-04-14 11:42:48,243|INFO|[LocalASR] Initializing Whisper model: base
+2026-04-14 11:42:48,248|INFO|[LocalASR] Target device: cuda
+2026-04-14 11:42:49,435|INFO|[LocalASR] Model initialized successfully
+2026-04-14 12:01:28,954|INFO|[LocalASR] Initializing Whisper model: base
+2026-04-14 12:01:28,955|INFO|[LocalASR] Target device: cuda
+2026-04-14 12:01:30,670|INFO|[LocalASR] Model initialized successfully
+2026-04-14 12:51:05,887|INFO|[LocalASR] Initializing Whisper model: base
+2026-04-14 12:51:05,889|INFO|[LocalASR] Target device: cuda
+2026-04-14 12:51:07,092|INFO|[LocalASR] Model initialized successfully
+2026-04-14 12:54:47,455|INFO|[LocalASR] Initializing Whisper model: base
+2026-04-14 12:54:47,455|INFO|[LocalASR] Target device: cuda
+2026-04-14 12:54:49,311|INFO|[LocalASR] Model initialized successfully
+2026-04-14 12:56:43,452|INFO|[LocalASR] Initializing Whisper model: base
+2026-04-14 12:56:43,452|INFO|[LocalASR] Target device: cuda
+2026-04-14 12:56:45,133|INFO|[LocalASR] Model initialized successfully
+2026-04-14 12:57:56,431|INFO|[LocalASR] Initializing Whisper model: base
+2026-04-14 12:57:56,431|INFO|[LocalASR] Target device: cuda
+2026-04-14 12:57:58,065|INFO|[LocalASR] Model initialized successfully
+2026-04-14 13:40:12,818|INFO|[LocalASR] Initializing Whisper model: base
+2026-04-14 13:40:12,818|INFO|[LocalASR] Target device: cuda
+2026-04-14 13:40:13,862|INFO|[LocalASR] Model initialized successfully
+2026-04-14 13:48:54,950|INFO|[LocalASR] Initializing Whisper model: base
+2026-04-14 13:48:54,951|INFO|[LocalASR] Target device: cuda
+2026-04-14 13:48:56,763|INFO|[LocalASR] Model initialized successfully
+2026-04-14 13:53:19,547|INFO|[LocalASR] Initializing Whisper model: base
+2026-04-14 13:53:19,549|INFO|[LocalASR] Target device: cuda
+2026-04-14 13:53:20,697|INFO|[LocalASR] Model initialized successfully
+2026-04-14 14:03:34,733|INFO|[LocalASR] Initializing Whisper model: base
+2026-04-14 14:03:34,735|INFO|[LocalASR] Target device: cuda
+2026-04-14 14:03:35,854|INFO|[LocalASR] Model initialized successfully
+2026-04-14 14:10:16,155|INFO|[LocalASR] Initializing Whisper model: base
+2026-04-14 14:10:16,157|INFO|[LocalASR] Target device: cuda
+2026-04-14 14:10:18,030|INFO|[LocalASR] Model initialized successfully

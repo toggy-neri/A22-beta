@@ -1,18 +1,158 @@
 import { useState, useRef, useEffect } from 'react';
 import { Mic, MicOff, Video, VideoOff, MessageSquare, Send } from 'lucide-react';
 
+
 function App() {
   const [isRecording, setIsRecording] = useState(false);
   const [videoEnabled, setVideoEnabled] = useState(true);
-  const [messages, setMessages] = useState<{role: string, text: string}[]>([
+  const [messages, setMessages] = useState<{ role: string, text: string }[]>([
     { role: 'ai', text: '你好，我是你的AI心理健康伙伴。今天感觉怎么样？' }
   ]);
   //输入框互斥
-  const [isAITyping, setIsAITyping] = useState(false);
+  const [isAITyping] = useState(false);
   const [inputText, setInputText] = useState('');
-  const [aiTypingText, setAiTypingText] = useState("");   
+  const [aiTypingText] = useState("");
 
   const videoRef = useRef<HTMLVideoElement>(null);
+
+  // WebRTC 相关的 Refs 和 State
+  const avatarVideoRef = useRef<HTMLVideoElement>(null);
+  const avatarAudioRef = useRef<HTMLAudioElement>(null);
+  const pcRef = useRef<RTCPeerConnection | null>(null);
+  const [sessionId, setSessionId] = useState<number>(0);
+  const [connectionState, setConnectionState] = useState<string>('disconnected');
+
+  useEffect(() => {
+    // 建立 WebRTC 连接数字人后台
+    // 本地开发不需要 STUN/TURN 服务器
+    const pc = new RTCPeerConnection({
+      sdpSemantics: 'unified-plan',
+      iceServers: []
+    } as RTCConfiguration);
+    pcRef.current = pc;
+
+    pc.addTransceiver('video', { direction: 'recvonly' });
+    pc.addTransceiver('audio', { direction: 'recvonly' });
+
+    pc.ontrack = (evt) => {
+      console.log('[WebRTC] Received track:', evt.track.kind, evt.streams);
+      if (evt.track.kind === 'video' && avatarVideoRef.current) {
+        const video = avatarVideoRef.current;
+        video.srcObject = evt.streams[0];
+        
+        video.onloadedmetadata = () => {
+          console.log('[WebRTC] Video metadata loaded, videoWidth:', video.videoWidth, 'videoHeight:', video.videoHeight);
+        };
+        
+        video.oncanplay = () => {
+          console.log('[WebRTC] Video can play');
+        };
+        
+        video.onplay = () => {
+          console.log('[WebRTC] Video started playing');
+        };
+        
+        video.onerror = (e) => {
+          console.error('[WebRTC] Video error:', e);
+        };
+        
+        const playPromise = video.play();
+        if (playPromise !== undefined) {
+          playPromise
+            .then(() => console.log('[WebRTC] Video play() succeeded'))
+            .catch(e => {
+              console.log('[WebRTC] Video play() failed:', e.name, e.message);
+              video.muted = true;
+              video.play().catch(e2 => console.log('[WebRTC] Video play() retry failed:', e2));
+            });
+        }
+      }
+      if (evt.track.kind === 'audio' && avatarAudioRef.current) {
+        const audio = avatarAudioRef.current;
+        audio.srcObject = evt.streams[0];
+        audio.play().catch(e => console.log('[WebRTC] Audio play error:', e));
+      }
+    };
+
+    pc.onconnectionstatechange = () => {
+      console.log('[WebRTC] Connection state:', pc.connectionState);
+      setConnectionState(pc.connectionState);
+    };
+
+    pc.oniceconnectionstatechange = () => {
+      console.log('[WebRTC] ICE state:', pc.iceConnectionState);
+    };
+
+    const negotiate = async () => {
+      try {
+        console.log('[WebRTC] Creating offer...');
+        const offer = await pc.createOffer();
+        await pc.setLocalDescription(offer);
+        console.log('[WebRTC] Local description set, ICE state:', pc.iceGatheringState);
+
+        // 等待 ICE gathering 完成或超时
+        const iceGatheringPromise = new Promise<void>((resolve) => {
+          if (pc.iceGatheringState === 'complete') {
+            console.log('[WebRTC] ICE gathering already complete');
+            resolve();
+          } else {
+            const checkState = () => {
+              console.log('[WebRTC] ICE state changed:', pc.iceGatheringState);
+              if (pc.iceGatheringState === 'complete') {
+                console.log('[WebRTC] ICE gathering complete');
+                pc.removeEventListener('icegatheringstatechange', checkState);
+                resolve();
+              }
+            };
+            pc.addEventListener('icegatheringstatechange', checkState);
+            // 即使未完成也继续，服务器可以处理
+            setTimeout(() => {
+              console.log('[WebRTC] ICE gathering timeout, proceeding anyway');
+              pc.removeEventListener('icegatheringstatechange', checkState);
+              resolve();
+            }, 3000);
+          }
+        });
+
+        await iceGatheringPromise;
+
+        console.log('[WebRTC] Sending offer to backend...');
+        // 获取并发送本地的offer给后端
+        const response = await fetch('http://localhost:12345/offer', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            sdp: pc.localDescription?.sdp,
+            type: pc.localDescription?.type,
+          })
+        });
+
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        const answer = await response.json();
+        console.log('[WebRTC] Received answer, sessionid:', answer.sessionid);
+        setSessionId(answer.sessionid || 0);
+        
+        if (answer.sdp && answer.type) {
+          await pc.setRemoteDescription(answer);
+          console.log('[WebRTC] Remote description set successfully');
+        } else {
+          throw new Error('Invalid answer from server');
+        }
+      } catch (err) {
+        console.error("[WebRTC] 连接失败:", err);
+        setConnectionState('failed');
+      }
+    };
+
+    negotiate();
+
+    return () => {
+      pc.close();
+    };
+  }, []);
 
   useEffect(() => {
     // 获取用户摄像头
@@ -35,7 +175,7 @@ function App() {
     }
   }, [videoEnabled]);
 
-const handleSendText = async (overrideText?: string) => {
+  const handleSendText = async (overrideText?: string) => {
     const textToSend = overrideText ?? inputText;
 
     if (!textToSend.trim()) return;
@@ -54,7 +194,7 @@ const handleSendText = async (overrideText?: string) => {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ messages: newMessages }),
+        body: JSON.stringify({ messages: newMessages, sessionid: sessionId }),
       });
 
       if (!response.body) throw new Error("No response body");
@@ -76,17 +216,17 @@ const handleSendText = async (overrideText?: string) => {
               if (dataStr === '[DONE]') break;
               try {
                 const data = JSON.parse(dataStr);
-                console.log("data:",data);
+                console.log("data:", data);
                 if (data.error) {
                   aiResponseText += `\n[错误: ${data.error}]`;
                 } else if (data.content) {
                   aiResponseText += data.content;
                 } else if (data.audio_url) {
-              console.log("tts结果:", data.audio_url);
-              const audio = new Audio(data.audio_url);
-              audio.play();
-              }
-                
+                  console.log("tts结果:", data.audio_url);
+                  const audio = new Audio(data.audio_url);
+                  audio.play();
+                }
+
                 // 更新界面的最后一条AI回复
                 setMessages(prev => {
                   const updated = [...prev];
@@ -109,119 +249,132 @@ const handleSendText = async (overrideText?: string) => {
       });
     }
   };
-// asr部分
-const wsRef = useRef<WebSocket | null>(null);
-const audioContextRef = useRef<AudioContext | null>(null);
-const processorRef = useRef<ScriptProcessorNode | null>(null);
-const handleToggleRecording = async () => {
-  if (!isRecording) {
-    setIsRecording(true);
+  // asr部分
+  const wsRef = useRef<WebSocket | null>(null);
+  const audioContextRef = useRef<AudioContext | null>(null);
+  const processorRef = useRef<ScriptProcessorNode | null>(null);
+  const handleToggleRecording = async () => {
+    if (!isRecording) {
+      setIsRecording(true);
 
-    wsRef.current = new WebSocket("ws://localhost:12345/api/record"); // 替换为你的后端地址
-    wsRef.current.onopen = () => {
-    console.log("✅ WS connected for ASR streaming");
-  };
-    wsRef.current.onmessage = (msg) => {
+      wsRef.current = new WebSocket("ws://localhost:12345/api/record"); // 替换为你的后端地址
+      wsRef.current.onopen = () => {
+        console.log("✅ WS connected for ASR streaming");
+      };
+      wsRef.current.onmessage = (msg) => {
         try {
-        const data = JSON.parse(msg.data);
+          const data = JSON.parse(msg.data);
 
-        if (data.type === "conversation.item.input_audio_transcription.completed") {
-          const text = data.transcript;
+          if (data.type === "conversation.item.input_audio_transcription.completed") {
+            const text = data.transcript;
 
-          console.log("🎤 ASR结果:", text);
+            console.log("🎤 ASR结果:", text);
 
-          // 1️⃣ 写入输入框（模拟用户输入）
-          setInputText(text);
+            // 1️⃣ 写入输入框（模拟用户输入）
+            setInputText(text);
 
-          // 2️⃣ 直接调用发送逻辑（模拟按下回车）
-          setTimeout(() => {
-            handleSendText(text);
-          }, 0);
+            // 2️⃣ 直接调用发送逻辑（模拟按下回车）
+            setTimeout(() => {
+              handleSendText(text);
+            }, 0);
+          }
+        } catch (e) {
+          console.error("WS message parse error:", e);
         }
-      } catch (e) {
-        console.error("WS message parse error:", e);
+      };
+
+      const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+      audioContextRef.current = new AudioContext({ sampleRate: 16000 });
+      const source = audioContextRef.current.createMediaStreamSource(stream);
+      processorRef.current = audioContextRef.current.createScriptProcessor(4096, 1, 1);
+
+      processorRef.current.onaudioprocess = (event) => {
+        if (!wsRef.current || wsRef.current.readyState !== WebSocket.OPEN) return;
+
+        const inputBuffer = event.inputBuffer.getChannelData(0);
+        const pcm16 = floatTo16BitPCM(inputBuffer);
+        const base64Chunk = btoa(pcm16);
+        wsRef.current.send(JSON.stringify({
+          event_id: `event_${Date.now()}`,
+          type: "input_audio_buffer.append",
+          audio: base64Chunk
+        }));
+      };
+
+      source.connect(processorRef.current);
+      processorRef.current.connect(audioContextRef.current.destination);
+
+    } else {
+      setIsRecording(false);
+
+      if (processorRef.current) processorRef.current.disconnect();
+      if (audioContextRef.current) audioContextRef.current.close();
+
+      if (wsRef.current && wsRef.current.readyState === WebSocket.OPEN) {
+        wsRef.current.send(JSON.stringify({ event_id: `event_${Date.now()}`, type: "input_audio_buffer.commit" }));
+        wsRef.current.send(JSON.stringify({ event_id: `event_${Date.now()}`, type: "session.finish" }));
       }
-    };
-
-    const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-    audioContextRef.current = new AudioContext({ sampleRate: 16000 });
-    const source = audioContextRef.current.createMediaStreamSource(stream);
-    processorRef.current = audioContextRef.current.createScriptProcessor(4096, 1, 1);
-
-    processorRef.current.onaudioprocess = (event) => {
-      if (!wsRef.current || wsRef.current.readyState !== WebSocket.OPEN) return;
-
-      const inputBuffer = event.inputBuffer.getChannelData(0);
-      const pcm16 = floatTo16BitPCM(inputBuffer);
-      const base64Chunk = btoa(pcm16);
-      wsRef.current.send(JSON.stringify({
-        event_id: `event_${Date.now()}`,
-        type: "input_audio_buffer.append",
-        audio: base64Chunk
-      }));
-    };
-
-    source.connect(processorRef.current);
-    processorRef.current.connect(audioContextRef.current.destination);
-
-  } else {
-    setIsRecording(false);
-
-    if (processorRef.current) processorRef.current.disconnect();
-    if (audioContextRef.current) audioContextRef.current.close();
-
-    if (wsRef.current && wsRef.current.readyState === WebSocket.OPEN) {
-      wsRef.current.send(JSON.stringify({ event_id: `event_${Date.now()}`, type: "input_audio_buffer.commit" }));
-      wsRef.current.send(JSON.stringify({ event_id: `event_${Date.now()}`, type: "session.finish" }));
     }
-  }
-};
+  };
 
 
-function floatTo16BitPCM(float32Array: Float32Array) {
-  const buffer = new ArrayBuffer(float32Array.length * 2);
-  const view = new DataView(buffer);
-  let offset = 0;
-  for (let i = 0; i < float32Array.length; i++, offset += 2) {
-    let s = Math.max(-1, Math.min(1, float32Array[i]));
-    view.setInt16(offset, s < 0 ? s * 0x8000 : s * 0x7fff, true);
+  function floatTo16BitPCM(float32Array: Float32Array) {
+    const buffer = new ArrayBuffer(float32Array.length * 2);
+    const view = new DataView(buffer);
+    let offset = 0;
+    for (let i = 0; i < float32Array.length; i++, offset += 2) {
+      let s = Math.max(-1, Math.min(1, float32Array[i]));
+      view.setInt16(offset, s < 0 ? s * 0x8000 : s * 0x7fff, true);
+    }
+    let binary = '';
+    const bytes = new Uint8Array(buffer);
+    const chunk = 0x8000;
+    for (let i = 0; i < bytes.length; i += chunk) {
+      const sub = bytes.subarray(i, i + chunk);
+      binary += String.fromCharCode.apply(null, sub as any);
+    }
+    return binary;
   }
-  let binary = '';
-  const bytes = new Uint8Array(buffer);
-  const chunk = 0x8000;
-  for (let i = 0; i < bytes.length; i += chunk) {
-    const sub = bytes.subarray(i, i + chunk);
-    binary += String.fromCharCode.apply(null, sub as any);
-  }
-  return binary;
-}
   return (
     <div className="flex w-full h-screen bg-neutral-900 text-neutral-100 font-sans">
       {/* 左侧：3D/2D数字人渲染与摄像头画面 */}
       <div className="flex-1 flex flex-col p-4 bg-black relative">
         {/* 数字人显示区域 */}
         <div className="flex-1 rounded-xl bg-neutral-800 flex items-center justify-center border border-neutral-700 overflow-hidden relative shadow-inner">
-          <div className="text-neutral-500 flex flex-col items-center gap-4">
-            <div className="w-32 h-32 bg-neutral-700/50 rounded-full flex items-center justify-center animate-pulse">
-              <span className="text-sm">Avatar</span>
+
+          <video
+            ref={avatarVideoRef}
+            autoPlay
+            playsInline
+            muted
+            className="w-full h-full object-contain"
+            style={{ backgroundColor: 'black', minHeight: '200px' }}
+          />
+          <audio ref={avatarAudioRef} autoPlay />
+
+          {connectionState !== 'connected' && (
+            <div className="absolute text-neutral-500 flex flex-col items-center gap-4 z-0 pointer-events-none">
+              <div className="w-32 h-32 bg-neutral-700/50 rounded-full flex items-center justify-center animate-pulse">
+                <span className="text-sm">Avatar</span>
+              </div>
+              <p className="text-sm">2D/3D数字人渲染区域 (WebRTC/12345)</p>
+              <p className="text-xs text-neutral-600">连接状态: {connectionState}</p>
             </div>
-            <p className="text-sm">2D/3D数字人渲染区域 (WebGL/Canvas)</p>
-            <p className="text-xs text-neutral-600">等待驱动数据...</p>
-          </div>
+          )}
         </div>
 
         {/* 底部控制栏 */}
         <div className="h-20 mt-4 bg-neutral-800 rounded-xl flex items-center justify-center gap-6 px-6 border border-neutral-700">
-           <button 
+          <button
             onClick={handleToggleRecording}
             className={`p-4 rounded-full transition-all duration-300 ${isRecording ? 'bg-red-500 hover:bg-red-600' : 'bg-neutral-600 hover:bg-neutral-500'}`}
           >
             {isRecording ? <Mic className="w-6 h-6 text-white" /> : <MicOff className="w-6 h-6 text-white" />}
           </button>
-          
-          <button 
-             onClick={() => setVideoEnabled(!videoEnabled)}
-             className={`p-4 rounded-full transition-all duration-300 ${videoEnabled ? 'bg-blue-500 hover:bg-blue-600' : 'bg-neutral-600 hover:bg-neutral-500'}`}
+
+          <button
+            onClick={() => setVideoEnabled(!videoEnabled)}
+            className={`p-4 rounded-full transition-all duration-300 ${videoEnabled ? 'bg-blue-500 hover:bg-blue-600' : 'bg-neutral-600 hover:bg-neutral-500'}`}
           >
             {videoEnabled ? <Video className="w-6 h-6 text-white" /> : <VideoOff className="w-6 h-6 text-white" />}
           </button>
@@ -229,10 +382,10 @@ function floatTo16BitPCM(float32Array: Float32Array) {
 
         {/* 右下角：本地摄像头画面 */}
         <div className="absolute bottom-28 right-8 w-48 h-36 bg-neutral-800 rounded-lg overflow-hidden border-2 border-neutral-600 shadow-xl">
-          <video 
-            ref={videoRef} 
-            autoPlay 
-            muted 
+          <video
+            ref={videoRef}
+            autoPlay
+            muted
             className="w-full h-full object-cover transform scale-x-[-1]"
           />
           {!videoEnabled && (
@@ -249,16 +402,15 @@ function floatTo16BitPCM(float32Array: Float32Array) {
           <MessageSquare className="w-5 h-5 mr-3 text-blue-400" />
           <h2 className="font-semibold text-lg">心理引导对话</h2>
         </div>
-        
+
         {/* 消息列表 */}
         <div className="flex-1 overflow-y-auto p-4 space-y-4">
           {messages.map((msg, i) => (
             <div key={i} className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
-              <div className={`max-w-[80%] rounded-2xl px-4 py-3 text-sm leading-relaxed shadow-sm ${
-                msg.role === 'user' 
-                  ? 'bg-blue-600 text-white rounded-br-none' 
+              <div className={`max-w-[80%] rounded-2xl px-4 py-3 text-sm leading-relaxed shadow-sm ${msg.role === 'user'
+                  ? 'bg-blue-600 text-white rounded-br-none'
                   : 'bg-neutral-700 text-neutral-100 rounded-bl-none'
-              }`}>
+                }`}>
                 {msg.text}
               </div>
             </div>
@@ -268,16 +420,16 @@ function floatTo16BitPCM(float32Array: Float32Array) {
         {/* 文本输入 */}
         <div className="p-4 border-t border-neutral-700 bg-neutral-800/50">
           <div className="flex items-center gap-2">
-            <input 
-              type="text" 
-              value={isAITyping ? aiTypingText : inputText} 
+            <input
+              type="text"
+              value={isAITyping ? aiTypingText : inputText}
               onChange={(e) => setInputText(e.target.value)}
               onKeyDown={(e) => e.key === 'Enter' && handleSendText()}
-              placeholder="输入你想说的话..." 
+              placeholder="输入你想说的话..."
               className="flex-1 bg-neutral-900 border border-neutral-700 rounded-full px-4 py-2 text-sm focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all"
             />
-            <button onClick={() => handleSendText()}  
-                    className="p-2 bg-blue-600 hover:bg-blue-500 rounded-full text-white transition-colors">
+            <button onClick={() => handleSendText()}
+              className="p-2 bg-blue-600 hover:bg-blue-500 rounded-full text-white transition-colors">
               <Send className="w-5 h-5" />
             </button>
           </div>

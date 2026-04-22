@@ -1,0 +1,201 @@
+# ==================== Python ====================
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# PyInstaller
+*.manifest
+*.spec
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+.pytest_cache/
+
+# Translations
+*.mo
+*.pot
+
+# Environments
+.env
+.env.local
+.env.*.local
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# ==================== 模型文件 ====================
+# PyTorch models
+*.pth
+*.pt
+*.ckpt
+*.safetensors
+
+# TensorFlow models
+*.pb
+*.h5
+*.keras
+
+# ONNX models
+*.onnx
+
+# Other model formats
+*.pkl
+*.pickle
+*.weights
+*.bin
+
+# ==================== 数据文件 ====================
+# Video files
+*.mp4
+*.avi
+*.mov
+*.mkv
+*.webm
+*.flv
+
+# Audio files
+*.wav
+*.mp3
+*.aac
+*.flac
+*.ogg
+*.m4a
+
+# Image data directories
+data/avatars/*/face_imgs/
+data/avatars/*/full_imgs/
+
+# Training data
+train.rar/
+train/
+
+# Checkpoints
+checkpoint_*/
+checkpoints/
+results/
+
+# ==================== 日志文件 ====================
+*.log
+logs/
+
+# ==================== IDE ====================
+# VSCode
+.vscode/
+*.code-workspace
+
+# PyCharm / IntelliJ
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# ==================== 操作系统 ====================
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Linux
+*~
+
+# ==================== 前端 ====================
+# Dependencies
+node_modules/
+
+# Build output
+frontend/dist/
+*.local
+
+# ==================== 临时文件 ====================
+*.tmp
+*.temp
+*.swp
+*.swo
+*~
+
+# ==================== 压缩文件 ====================
+*.zip
+*.rar
+*.7z
+*.tar
+*.gz
+
+# ==================== 数据库 ====================
+*.db
+*.sqlite
+*.sqlite3
+
+# ==================== 其他 ====================
+# Test files
+test.pcm
+test_*.py
+
+# Jupyter notebooks
+.ipynb_checkpoints/
+
+# MyPy
+.mypy_cache/
+
+# Ruff
+.ruff_cache/
+
+# Chroma DB
+backend/rag_db/
+
+# Deploy test
+deploy_test/
+
+# Misc
+*.txt
+!.txt
+!requirements.txt

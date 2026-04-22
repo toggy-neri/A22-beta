@@ -1,0 +1,81 @@
+version: '3.8'
+
+services:
+  # ==================== 数字人核心服务 ====================
+  livetalking:
+    build:
+      context: ../..
+      dockerfile: project/docker/Dockerfile
+      target: production
+    container_name: livetalking-service
+    restart: unless-stopped
+    ports:
+      - "8010:8010"
+      - "12345:12345"
+    environment:
+      - NVIDIA_VISIBLE_DEVICES=all
+      - DASHSCOPE_API_KEY=${DASHSCOPE_API_KEY}
+      - DEEPSEEK_API_KEY=${DEEPSEEK_API_KEY}
+      - USE_LOCAL_ASR=${USE_LOCAL_ASR:-false}
+      - ENABLE_RAG=${ENABLE_RAG:-false}
+    volumes:
+      - ../../data:/app/data
+      - ../../backend/.env:/app/backend/.env:ro
+      - avatar_cache:/app/backend/LiveTalking/.cache
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+    networks:
+      - digital-avatar-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8010/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 60s
+
+  # ==================== 可选: 本地 ASR 服务 ====================
+  asr-service:
+    build:
+      context: ../asr_service
+      dockerfile: Dockerfile
+    container_name: asr-service
+    restart: unless-stopped
+    ports:
+      - "9000:9000"
+    environment:
+      - MODEL_NAME=paraformer-large
+      - DEVICE=cpu
+    volumes:
+      - asr_models:/app/models
+    networks:
+      - digital-avatar-network
+    profiles:
+      - local-asr
+
+  # ==================== 可选: Redis 缓存 ====================
+  redis:
+    image: redis:7-alpine
+    container_name: redis-cache
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    networks:
+      - digital-avatar-network
+    profiles:
+      - cache
+
+networks:
+  digital-avatar-network:
+    driver: bridge
+
+volumes:
+  avatar_cache:
+  asr_models:
+  redis_data:

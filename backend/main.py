@@ -230,6 +230,42 @@ async def offer_proxy(request: Request):
             content={"error": str(e)}
         )
 
+@app.get("/api/avatars")
+async def list_avatars():
+    try:
+        async with httpx.AsyncClient() as client:
+            resp = await client.get(f"{LIVETALKING_URL}/avatars", timeout=10.0)
+            return JSONResponse(content=resp.json())
+    except httpx.ConnectError:
+        return JSONResponse(
+            status_code=503,
+            content={"error": "LiveTalking 服务未启动"}
+        )
+    except Exception as e:
+        return JSONResponse(status_code=500, content={"error": str(e)})
+
+class SwitchAvatarRequest(BaseModel):
+    sessionid: int = 0
+    avatar_id: str
+
+@app.post("/api/switch_avatar")
+async def switch_avatar(request: SwitchAvatarRequest):
+    try:
+        async with httpx.AsyncClient() as client:
+            resp = await client.post(
+                f"{LIVETALKING_URL}/switch_avatar",
+                json={"sessionid": request.sessionid, "avatar_id": request.avatar_id},
+                timeout=10.0
+            )
+            return JSONResponse(content=resp.json())
+    except httpx.ConnectError:
+        return JSONResponse(
+            status_code=503,
+            content={"error": "LiveTalking 服务未启动"}
+        )
+    except Exception as e:
+        return JSONResponse(status_code=500, content={"error": str(e)})
+
 @app.on_event("startup")
 async def startup_event():
     print(f"[Main] ASR Mode: {'Local (FunASR)' if USE_LOCAL_ASR else 'Cloud (Qwen)'}")

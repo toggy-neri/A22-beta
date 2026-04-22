@@ -1,5 +1,6 @@
 import os
 import json
+import re
 import httpx
 from openai import AsyncOpenAI
 from dotenv import load_dotenv
@@ -15,6 +16,10 @@ client = AsyncOpenAI(
     api_key=DEEPSEEK_API_KEY,
     base_url="https://api.deepseek.com"
 )
+
+def filter_parentheses(text: str) -> str:
+    """移除文本中的括号内容（如（语气温和））"""
+    return re.sub(r'[（(][^）)]*[）)]', '', text).strip()
 
 async def send_text_to_avatar(text: str, sessionid: int = 0):
     try:
@@ -107,10 +112,14 @@ async def generate_chat_response_stream(messages_history: list, sessionid: int =
             if chunk.choices and chunk.choices[0].delta.content:
                 content = chunk.choices[0].delta.content
                 full_text += content
-                yield f"data: {json.dumps({'content': content})}\n\n"
+                filtered_content = filter_parentheses(content)
+                if filtered_content:
+                    yield f"data: {json.dumps({'content': filtered_content})}\n\n"
 
         if full_text.strip():
-            await send_text_to_avatar(full_text, sessionid)
+            filtered_text = filter_parentheses(full_text)
+            if filtered_text:
+                await send_text_to_avatar(filtered_text, sessionid)
 
         yield "data: [DONE]\n\n"
 

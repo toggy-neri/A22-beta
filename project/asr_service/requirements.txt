@@ -1,0 +1,10 @@
+fastapi>=0.100.0
+uvicorn>=0.22.0
+numpy>=1.24.0
+soundfile>=0.12.0
+librosa>=0.10.0
+websockets>=11.0
+funasr>=1.0.0
+torch>=2.0.0
+openai-whisper>=20230314
+dashscope>=1.25.0

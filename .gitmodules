@@ -1,0 +1,3 @@
+[submodule "backend/LiveTalking"]
+	path = backend/LiveTalking
+	url = https://github.com/lipku/LiveTalking.git
